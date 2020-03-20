@@ -28,9 +28,6 @@ public class Aluno {
 	@Column(name = "matricula")
 	private String matricula;
 
-	@Column(name = "email", length = 200)
-	private String email;
-
 	@Column(name = "data_criacao")
 	@CreatedDate
 	private Date dataCriacao;
@@ -45,7 +42,6 @@ public class Aluno {
 	public Aluno(CreateAlunoDTO createAlunoDTO) {
 		this.nome = createAlunoDTO.getNome();
 		this.matricula = createAlunoDTO.getMatricula();
-		this.email = createAlunoDTO.getEmail();
 	}
 
 	public Integer getId() {
@@ -70,14 +66,6 @@ public class Aluno {
 
 	public void setMatricula(String matricula) {
 		this.matricula = matricula;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
 	}
 
 	public Date getDataCriacao() {

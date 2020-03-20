@@ -1,5 +1,6 @@
 package br.com.fiap.alunos.service.impl;
 
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -41,6 +42,8 @@ public class AlunoServiceImpl implements AlunoService {
     @Override
     public AlunoDTO create(CreateAlunoDTO createAlunoDTO) {
         Aluno aluno = new Aluno(createAlunoDTO);
+        aluno.setDataCriacao(new Date());
+        aluno.setDataModificacao(new Date());
         return saveAndGetAlunoDTO(aluno);
     }
 
@@ -49,7 +52,7 @@ public class AlunoServiceImpl implements AlunoService {
         Aluno aluno =  getAluno(id);
         aluno.setNome(createAlunoDTO.getNome());
         aluno.setMatricula(createAlunoDTO.getMatricula());
-        aluno.setEmail(createAlunoDTO.getEmail());
+        aluno.setDataModificacao(new Date());
         return saveAndGetAlunoDTO(aluno);
     }
 

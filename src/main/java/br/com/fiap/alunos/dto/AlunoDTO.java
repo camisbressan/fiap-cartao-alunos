@@ -11,31 +11,27 @@ public class AlunoDTO {
     private Integer id;
     private String nome;
     private String matricula;
-    private String email;
     private ZonedDateTime dataCriacao;
     private ZonedDateTime dataAtualizacao;
     
     public AlunoDTO(){}
     
-	public AlunoDTO(Integer id, String nome, String matricula, String email) {
+	public AlunoDTO(Integer id, String nome, String matricula) {
 		this.id = id;
 		this.nome = nome;
 		this.matricula = matricula;
-		this.email = email;
 	}
 	
 	public AlunoDTO(CreateAlunoDTO alunoDTO, Integer id) {
 		this.id = id;
 		this.nome = alunoDTO.getNome();
 		this.matricula = alunoDTO.getMatricula();
-		this.email = alunoDTO.getEmail();
 	}
 
 	public AlunoDTO(Aluno aluno) {
 		this.id = aluno.getId();
 		this.nome = aluno.getNome();
 		this.matricula = aluno.getMatricula();
-		this.email = aluno.getEmail();
         this.dataCriacao = convertToZonedDateTime(aluno.getDataCriacao());
         this.dataAtualizacao = convertToZonedDateTime(aluno.getDataModificacao());
 	}
@@ -63,18 +59,10 @@ public class AlunoDTO {
 	public void setMatricula(String matricula) {
 		this.matricula = matricula;
 	}
-	
-	public String getEmail() {
-		return email;
-	}
-	
-	public void setEmail(String email) {
-		this.email = email;
-	}
 
-    private ZonedDateTime convertToZonedDateTime(Date dataModificacao) {
-        if(dataModificacao != null){
-            return ZonedDateTime.ofInstant(dataModificacao.toInstant(), ZoneOffset.systemDefault());
+    private ZonedDateTime convertToZonedDateTime(Date data) {
+        if(data != null){
+            return ZonedDateTime.ofInstant(data.toInstant(), ZoneOffset.systemDefault());
         } else {
             return null;
         }
