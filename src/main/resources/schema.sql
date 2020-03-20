@@ -1,0 +1,10 @@
+DROP TABLE IF EXISTS TB_ALUNOS;
+ 
+CREATE TABLE TB_ALUNOS (
+  id INT AUTO_INCREMENT  PRIMARY KEY,
+  nome VARCHAR(250) NOT NULL,
+  matricula VARCHAR(250) NOT NULL,
+  email VARCHAR(250) DEFAULT NULL,
+  data_criacao timestamp DEFAULT NULL,
+  data_atualizacao timestamp DEFAULT NULL
+);
