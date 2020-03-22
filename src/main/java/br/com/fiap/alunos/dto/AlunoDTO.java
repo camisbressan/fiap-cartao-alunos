@@ -4,14 +4,22 @@ import java.time.ZoneOffset;
 import java.time.ZonedDateTime;
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import br.com.fiap.alunos.entity.Aluno;
 
 public class AlunoDTO {
 
     private Integer id;
+    
     private String nome;
+    
     private String matricula;
+    
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
     private ZonedDateTime dataCriacao;
+    
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
     private ZonedDateTime dataAtualizacao;
     
     public AlunoDTO(){}
