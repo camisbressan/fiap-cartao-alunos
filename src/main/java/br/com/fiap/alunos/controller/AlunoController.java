@@ -5,6 +5,7 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -40,8 +41,8 @@ public class AlunoController {
 			@ApiResponse(code = 403, message = "É proibido acessar esse recurso"),
 			@ApiResponse(code = 404, message = "O recurso não foi encontrado") })
 	@GetMapping
-	public List<AlunoDTO> getAll() {
-		return service.findAll();
+	public ResponseEntity<List<AlunoDTO>> getAll() {
+		return ResponseEntity.ok(service.findAll());
 	}
 
 	@ResponseStatus(HttpStatus.OK)
@@ -51,8 +52,8 @@ public class AlunoController {
 			@ApiResponse(code = 403, message = "É proibido acessar esse recurso"),
 			@ApiResponse(code = 404, message = "O recurso não foi encontrado") })
 	@GetMapping("{id}")
-    public AlunoDTO findById(@PathVariable Integer id) {
-        return service.findById(id);
+    public ResponseEntity<AlunoDTO> findById(@PathVariable Integer id) {
+        return ResponseEntity.ok(service.findById(id));
     }
 
 	@ApiOperation(value = "Cria um aluno")
@@ -62,8 +63,8 @@ public class AlunoController {
 			@ApiResponse(code = 404, message = "O recurso não foi encontrado") })
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
-	public AlunoDTO create(@RequestBody @Valid CreateAlunoDTO createAlunoDTO) {
-		return service.create(createAlunoDTO);
+	public ResponseEntity<AlunoDTO> create(@RequestBody @Valid CreateAlunoDTO createAlunoDTO) {
+		return ResponseEntity.ok(service.create(createAlunoDTO));
 	}
 
 	@ApiOperation(value = "Atualiza um aluno")
@@ -73,8 +74,8 @@ public class AlunoController {
 			@ApiResponse(code = 403, message = "É proibido acessar esse recurso"),
 			@ApiResponse(code = 404, message = "O recurso não foi encontrado") })
 	@PutMapping("{id}")
-    public AlunoDTO update(@PathVariable Integer id, @RequestBody CreateAlunoDTO createAlunoDTO){
-        return service.update(id, createAlunoDTO);
+    public ResponseEntity<AlunoDTO> update(@PathVariable Integer id, @RequestBody CreateAlunoDTO createAlunoDTO){
+        return ResponseEntity.ok(service.update(id, createAlunoDTO));
     }
 
 
