@@ -29,43 +29,36 @@ public class AlunoServiceImpl implements AlunoService {
 		return alunosList.stream().map(AlunoDTO::new).collect(Collectors.toList());
 	}
 
-    @Override
-    public AlunoDTO findById(Integer id) {
-        return saveAndGetAlunoDTO(getAluno(id));
-    }
+	@Override
+	public AlunoDTO findById(Integer id) {
+		return new AlunoDTO(
+				alunoRepository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND)));
+	}
 
-    private Aluno getAluno(Integer id) {
-        return alunoRepository.findById(id)
-                    .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
-    }
+	@Override
+	public AlunoDTO create(CreateAlunoDTO createAlunoDTO) {
+		Aluno aluno = new Aluno(createAlunoDTO);
+		aluno.setDataCriacao(new Date());
+		aluno.setDataModificacao(new Date());
+		return new AlunoDTO(alunoRepository.save(aluno));
+	}
 
-    @Override
-    public AlunoDTO create(CreateAlunoDTO createAlunoDTO) {
-        Aluno aluno = new Aluno(createAlunoDTO);
-        aluno.setDataCriacao(new Date());
-        aluno.setDataModificacao(new Date());
-        return saveAndGetAlunoDTO(aluno);
-    }
+	@Override
+	public AlunoDTO update(Integer id, CreateAlunoDTO createAlunoDTO) {
+		AlunoDTO alunoFind = findById(id);
+		Aluno aluno = new Aluno();
+		aluno.setId(id);
+		aluno.setNome(createAlunoDTO.getNome());
+		aluno.setMatricula(createAlunoDTO.getMatricula());
+		aluno.setDataCriacao(Date.from(alunoFind.getDataCriacao().toInstant()));
+		aluno.setDataModificacao(new Date());
+		return new AlunoDTO(alunoRepository.save(aluno));
+	}
 
-    @Override
-    public AlunoDTO update(Integer id, CreateAlunoDTO createAlunoDTO) {
-        Aluno aluno =  getAluno(id);
-        aluno.setNome(createAlunoDTO.getNome());
-        aluno.setMatricula(createAlunoDTO.getMatricula());
-        aluno.setDataModificacao(new Date());
-        return saveAndGetAlunoDTO(aluno);
-    }
+	@Override
+	public void delete(Integer id) {
+		alunoRepository.deleteById(id);
+	}
 
-
-    private AlunoDTO saveAndGetAlunoDTO(Aluno aluno) {
-        Aluno savedAluno = alunoRepository.save(aluno);
-        return new AlunoDTO(savedAluno);
-    }
-
-    @Override
-    public void delete(Integer id) {
-        Aluno aluno = getAluno(id);
-        alunoRepository.delete(aluno);
-    }
-
+	
 }
