@@ -14,7 +14,7 @@
 
   - Spring Web
   
-  - Spring JPA
+  - Spring Data JPA
   
   - H2 Database
   
