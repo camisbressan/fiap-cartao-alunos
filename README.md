@@ -36,17 +36,17 @@ Segue exemplos abaixo.
 
 H2 Console - http://localhost:8080/h2/login.jsp
 
-![H2_Console](docs/H2_CONSOLE.jpeg)
+![H2_Console](docs/H2_CONSOLE.jpg)
 
-![H2_Console](docs/H2_SELECT.jpeg)
+![H2_Console](docs/H2_SELECT.jpg)
 
 Swagger - http://localhost:8080/swagger-ui.html
 
-![Swagger_Alunos](docs/SWAGGER_ALUNOS.jpeg)
+![Swagger_Alunos](docs/SWAGGER_ALUNOS.jpg)
 
 Postman - GET: http://localhost:8080/alunos - Lista todos os alunos
 
-![Postman_Alunos](docs/POSTMAN_ALUNOS.jpeg)
+![Postman_Alunos](docs/POSTMAN_ALUNOS.jpg)
 
 ## Demais rotas para gestão dos alunos
 
