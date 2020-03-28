@@ -28,7 +28,7 @@
 
 `$ git clone https://github.com/camisbressan/fiap-cartao-alunos.git`
 
-Após executar a aplicação de Alunos, no diretório `src` no pacote `br.com.fiap.alunos` existe um arquivo chamado `AlunosApplication.java`. Abra esse arquivo e execute Run.
+A aplicação de Alunos deve ser iniciada antes da aplicação de Transação (`https://github.com/camisbressan/fiap-cartao-transacao.git`) , para isso, no diretório `src` no pacote `br.com.fiap.alunos` existe um arquivo chamado `AlunosApplication.java`. Abra esse arquivo e execute Run.
 
 A carga de dados inicial feita através do arquivo disponibilizado no Google Drive (https://drive.google.com/open?id=19ILqrYjOEe4C840ZRwhKDauvhDZCKcWa) pode ser validada pela API de listagem de alunos (http://localhost:8080/alunos) via H2 Console, via Swagger e via Postman.
 
