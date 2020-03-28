@@ -32,7 +32,6 @@ class AlunoServiceImplTest {
 
 	@Test
 	public void testFindAll() {
-
 		AlunoRepository alunoRepository = mock(AlunoRepository.class);
 		List<Aluno> alunoList = new ArrayList<Aluno>();
 		alunoList.add(new Aluno());
@@ -47,7 +46,6 @@ class AlunoServiceImplTest {
 
 	@Test
 	public void testFindById() {
-
 		AlunoRepository alunoRepository = mock(AlunoRepository.class);
 		Aluno aluno = gerarAluno();
 		Optional<Aluno> alunoOptional = Optional.of(aluno);
@@ -63,11 +61,9 @@ class AlunoServiceImplTest {
 	@Test
 	public void testCreate() {
 		AlunoRepository alunoRepository = mock(AlunoRepository.class);
-
 		when(alunoRepository.save(Mockito.any(Aluno.class))).thenReturn(gerarAluno());
 
 		AlunoService alunoService = new AlunoServiceImpl(alunoRepository);
-
 		AlunoDTO alunoRetorno = alunoService.create(gerarCreateAlunoDTO());
 
 		assertNotNull(alunoRetorno);
